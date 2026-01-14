@@ -5,20 +5,20 @@
 const featuredItems = [
     {
         id: 1,
-        title: "Heart Vase Boquet",
-        description: "Heart shaped vase boquet with forever roses and lilies",
+        title: "Heart Vase",
+        description: "Heart shaped vase with forever roses and lilies",
         image: "images/item1.jpg"  // Replace with your image filename
     },
     {
         id: 2,
-        title: "Valentines Vase Boquet",
-        description: "Sriped valentines vase boquet with forever roses and lilies",
+        title: "Valentines Vase",
+        description: "Sriped valentines vase with forever roses and lilies",
         image: "images/item2.jpg"  // Replace with your image filename
     },
     {
         id: 3,
-        title: "Wavy Vase Boquet",
-        description: "Wavy vase boquet with forever roses and lilies",
+        title: "Wavy Vase",
+        description: "Wavy vase with forever roses and lilies",
         image: "images/item3.jpg"  // Replace with your image filename
     }
 ];
