@@ -42,7 +42,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 0.5rem 0;
+    padding: 0.3rem 0;
 }
 
 .navbar .container {
@@ -57,7 +57,7 @@ body {
 }
 
 .nav-brand .logo {
-    height: 120px;
+    height: 72px;
     width: auto;
     max-width: none;
     object-fit: contain;
@@ -73,13 +73,19 @@ body {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 500;
+    font-size: 1.25rem;
     transition: color 0.3s ease;
     position: relative;
 }
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    color: var(--primary-color);
+    background: linear-gradient(-45deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: waterFlow 8s ease infinite;
 }
 
 .nav-menu a.active::after {
@@ -89,7 +95,9 @@ body {
     left: 0;
     right: 0;
     height: 2px;
-    background-color: var(--primary-color);
+    background: linear-gradient(90deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 200% 100%;
+    animation: waterFlow 5.33s ease infinite;
 }
 
 /* Main Content */
@@ -97,9 +105,24 @@ main {
     flex: 1;
 }
 
+/* Animated Gradient Animation */
+@keyframes waterFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    background: linear-gradient(-45deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 400% 400%;
+    animation: waterFlow 10s ease infinite;
     color: white;
     padding: 4rem 0;
     text-align: center;
@@ -126,7 +149,12 @@ main {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: var(--primary-color);
+    background: linear-gradient(-45deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: waterFlow 10s ease infinite;
 }
 
 .about-content {
@@ -151,7 +179,12 @@ main {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: var(--primary-color);
+    background: linear-gradient(-45deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: waterFlow 10s ease infinite;
 }
 
 .featured-grid {
@@ -173,10 +206,29 @@ main {
     box-shadow: var(--shadow-hover);
 }
 
+.featured-image,
 .featured-image-placeholder {
     width: 100%;
     height: 300px;
-    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+    overflow: hidden;
+    padding: 10px;
+    background: linear-gradient(-45deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 400% 400%;
+    animation: waterFlow 8s ease infinite;
+    box-sizing: border-box;
+}
+
+.featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.featured-image-placeholder {
+    background: linear-gradient(-45deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 400% 400%;
+    animation: waterFlow 8s ease infinite;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -185,11 +237,22 @@ main {
     font-weight: 500;
 }
 
-.featured-item h3 {
+.featured-item-info {
     padding: 1.5rem;
+}
+
+.featured-item-info h3 {
     text-align: center;
     color: var(--text-color);
     font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.featured-item-info p {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 /* Gallery Section */
@@ -201,7 +264,12 @@ main {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    background: linear-gradient(-45deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: waterFlow 10s ease infinite;
 }
 
 .gallery-subtitle {
@@ -230,10 +298,29 @@ main {
     box-shadow: var(--shadow-hover);
 }
 
+.gallery-image,
 .gallery-image-placeholder {
     width: 100%;
     height: 300px;
-    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+    overflow: hidden;
+    padding: 10px;
+    background: linear-gradient(-45deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 400% 400%;
+    animation: waterFlow 8s ease infinite;
+    box-sizing: border-box;
+}
+
+.gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-image-placeholder {
+    background: linear-gradient(-45deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 400% 400%;
+    animation: waterFlow 8s ease infinite;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -266,7 +353,12 @@ main {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    background: linear-gradient(-45deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: waterFlow 10s ease infinite;
 }
 
 .contact-subtitle {
@@ -292,7 +384,12 @@ main {
 }
 
 .contact-info h3 {
-    color: var(--primary-color);
+    background: linear-gradient(-45deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: waterFlow 10s ease infinite;
     margin-bottom: 2rem;
     font-size: 1.5rem;
 }
@@ -316,13 +413,18 @@ main {
 }
 
 .contact-item a {
-    color: var(--primary-color);
+    background: linear-gradient(-45deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: waterFlow 8s ease infinite;
     text-decoration: none;
-    transition: color 0.3s ease;
+    display: inline-block;
 }
 
 .contact-item a:hover {
-    color: var(--primary-dark);
+    filter: brightness(1.2);
     text-decoration: underline;
 }
 
@@ -333,7 +435,12 @@ main {
 }
 
 .contact-form-wrapper h3 {
-    color: var(--primary-color);
+    background: linear-gradient(-45deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: waterFlow 10s ease infinite;
     margin-bottom: 2rem;
     font-size: 1.5rem;
 }
@@ -376,7 +483,9 @@ main {
 }
 
 .submit-btn {
-    background-color: var(--primary-color);
+    background: linear-gradient(-45deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 400% 400%;
+    animation: waterFlow 6.67s ease infinite;
     color: white;
     padding: 0.875rem 2rem;
     border: none;
@@ -384,12 +493,12 @@ main {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: transform 0.2s ease, filter 0.3s ease;
     align-self: flex-start;
 }
 
 .submit-btn:hover {
-    background-color: var(--primary-dark);
+    filter: brightness(1.1);
     transform: translateY(-2px);
 }
 
@@ -399,7 +508,9 @@ main {
 
 /* Footer */
 footer {
-    background-color: var(--text-color);
+    background: linear-gradient(-45deg, #4169E1, #6495ED, #20B2AA, #40E0D0, #4169E1);
+    background-size: 400% 400%;
+    animation: waterFlow 10s ease infinite;
     color: white;
     text-align: center;
     padding: 2rem 0;

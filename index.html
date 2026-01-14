@@ -16,7 +16,7 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
+                <!-- <li><a href="gallery.html">Gallery</a></li> -->
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
@@ -28,6 +28,16 @@
             <div class="container">
                 <h2>Custom Decorations & Unique Trinkets</h2>
                 <p>Handcrafted 3D Printed Art & Custom Decorations</p>
+            </div>
+        </section>
+
+        <!-- Featured Items Section -->
+        <section class="featured-section">
+            <div class="container">
+                <h2>Featured Items</h2>
+                <div class="featured-grid" id="featured-items-container">
+                    <!-- Items will be dynamically loaded from items-data.js -->
+                </div>
             </div>
         </section>
 
@@ -49,33 +59,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Featured Items Section -->
-        <section class="featured-section">
-            <div class="container">
-                <h2>Featured Items</h2>
-                <div class="featured-grid">
-                    <div class="featured-item">
-                        <div class="featured-image-placeholder">
-                            <span>Featured Item 1</span>
-                        </div>
-                        <h3>Custom 3D Printed Decoration</h3>
-                    </div>
-                    <div class="featured-item">
-                        <div class="featured-image-placeholder">
-                            <span>Featured Item 2</span>
-                        </div>
-                        <h3>Unique Trinket Collection</h3>
-                    </div>
-                    <div class="featured-item">
-                        <div class="featured-image-placeholder">
-                            <span>Featured Item 3</span>
-                        </div>
-                        <h3>Personalized Art Piece</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer>
@@ -83,5 +66,8 @@
             <p>&copy; 2024 Lazy Blue Studio. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="items-data.js"></script>
+    <script src="render-items.js"></script>
 </body>
 </html>
