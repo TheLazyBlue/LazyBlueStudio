@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - Lazy Blue Studio</title>
+    <title>Item Details - Lazy Blue Studio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,14 +22,11 @@
     </nav>
 
     <main>
-        <!-- Current Gallery Section -->
-        <section class="gallery-section">
+        <section class="item-detail-section">
             <div class="container">
-                <h2>Our Gallery</h2>
-                <p class="section-subtitle">Explore our collection of custom decorations, unique trinkets, and 3D printed art pieces</p>
-                
-                <div class="gallery-grid" id="gallery-items-container">
-                    <!-- Items will be dynamically loaded from items-data.js -->
+                <div id="item-detail-container">
+                    <!-- Item details will be loaded here -->
+                    <div class="loading-message">Loading item details...</div>
                 </div>
             </div>
         </section>
@@ -42,6 +39,6 @@
     </footer>
 
     <script src="items-data.js"></script>
-    <script src="render-items.js"></script>
+    <script src="item-detail.js"></script>
 </body>
 </html>
