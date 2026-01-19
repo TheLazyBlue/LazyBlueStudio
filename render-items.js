@@ -106,6 +106,10 @@ function renderPastEvents() {
     container.innerHTML = '';
     
     pastEvents.forEach(item => {
+        const link = document.createElement('a');
+        link.href = `item-detail.html?id=${item.id}`;
+        link.className = 'event-item-link';
+        
         const itemDiv = document.createElement('div');
         itemDiv.className = 'event-item';
         
@@ -146,19 +150,19 @@ function renderPastEvents() {
             infoDiv.appendChild(locationDiv);
         }
         
-        const link = document.createElement('a');
-        link.href = `item-detail.html?id=${item.id}`;
-        link.className = 'event-view-details';
-        link.textContent = 'View Details →';
+        const viewDetailsDiv = document.createElement('div');
+        viewDetailsDiv.className = 'event-view-details';
+        viewDetailsDiv.textContent = 'View Details →';
         
         infoDiv.appendChild(title);
         infoDiv.appendChild(description);
-        infoDiv.appendChild(link);
+        infoDiv.appendChild(viewDetailsDiv);
         
         itemDiv.appendChild(imageDiv);
         itemDiv.appendChild(infoDiv);
         
-        container.appendChild(itemDiv);
+        link.appendChild(itemDiv);
+        container.appendChild(link);
     });
 }
 

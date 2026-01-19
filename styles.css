@@ -314,6 +314,12 @@ main {
     background: var(--primary-dark);
 }
 
+.event-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .event-item {
     background-color: var(--bg-color);
     border-radius: 12px;
@@ -322,6 +328,13 @@ main {
     min-height: 800px;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-item-link:hover .event-item {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .event-item-image,
@@ -412,11 +425,11 @@ main {
     transition: color 0.3s ease;
     margin-top: 1rem;
     align-self: flex-start;
+    pointer-events: none;
 }
 
-.event-view-details:hover {
+.event-item-link:hover .event-view-details {
     color: var(--primary-dark);
-    text-decoration: underline;
 }
 
 /* Gallery Section */

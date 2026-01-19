@@ -28,7 +28,7 @@ function loadItemDetail() {
     let html = `
         <div class="item-detail">
             <div class="item-detail-header">
-                <a href="index.html" class="back-link">← Back to Home</a>
+                <a href="${item.category === 'Event' ? 'events.html' : 'index.html'}" class="back-link">← Back to ${item.category === 'Event' ? 'Events' : 'Home'}</a>
                 <h1>${item.title}</h1>
                 ${item.category ? `<span class="item-category">${item.category}</span>` : ''}
             </div>
@@ -38,15 +38,22 @@ function loadItemDetail() {
                     <div class="item-main-image">
                         <img src="${item.image}" alt="${item.title}" id="main-image">
                     </div>
-                    ${item.additionalImages && item.additionalImages.length > 0 ? `
-                    <div class="item-thumbnails">
-                        ${item.additionalImages.map((img, index) => `
-                            <div class="thumbnail ${index === 0 ? 'active' : ''}" data-image="${img}">
-                                <img src="${img}" alt="${item.title} - View ${index + 1}">
+                    ${(() => {
+                        // Combine main image with additional images
+                        const allImages = [item.image, ...(item.additionalImages || [])];
+                        if (allImages.length > 1) {
+                            return `
+                            <div class="item-thumbnails">
+                                ${allImages.map((img, index) => `
+                                    <div class="thumbnail ${index === 0 ? 'active' : ''}" data-image="${img}">
+                                        <img src="${img}" alt="${item.title} - View ${index + 1}">
+                                    </div>
+                                `).join('')}
                             </div>
-                        `).join('')}
-                    </div>
-                    ` : ''}
+                            `;
+                        }
+                        return '';
+                    })()}
                 </div>
                 
                 <div class="item-info-section">
@@ -55,6 +62,16 @@ function loadItemDetail() {
                         <p class="short-description">${item.description}</p>
                         ${item.detailedDescription ? `<p class="detailed-description">${item.detailedDescription}</p>` : ''}
                     </div>
+                    
+                    ${item.eventDate || item.location ? `
+                    <div class="item-specifications">
+                        <h2>Event Details</h2>
+                        <dl class="specs-list">
+                            ${item.eventDate ? `<dt>Date:</dt><dd>${item.eventDate}</dd>` : ''}
+                            ${item.location ? `<dt>Location:</dt><dd>${item.location}</dd>` : ''}
+                        </dl>
+                    </div>
+                    ` : ''}
                     
                     ${item.specifications && Object.keys(item.specifications).length > 0 ? `
                     <div class="item-specifications">
@@ -86,7 +103,8 @@ function loadItemDetail() {
     container.innerHTML = html;
     
     // Set up thumbnail image switching
-    if (item.additionalImages && item.additionalImages.length > 0) {
+    const allImages = [item.image, ...(item.additionalImages || [])];
+    if (allImages.length > 1) {
         const thumbnails = container.querySelectorAll('.thumbnail');
         const mainImage = document.getElementById('main-image');
         
