@@ -35,11 +35,7 @@ function renderFeaturedItems() {
         const title = document.createElement('h3');
         title.textContent = item.title;
         
-        const description = document.createElement('p');
-        description.textContent = item.description;
-        
         infoDiv.appendChild(title);
-        infoDiv.appendChild(description);
         
         itemDiv.appendChild(imageDiv);
         itemDiv.appendChild(infoDiv);
@@ -49,14 +45,25 @@ function renderFeaturedItems() {
     });
 }
 
-// Render gallery items on gallery page
+// Render gallery items on gallery page (includes featured items and gallery items, not events)
 function renderGalleryItems() {
     const container = document.getElementById('gallery-items-container');
-    if (!container || typeof galleryItems === 'undefined') return;
+    if (!container) return;
     
     container.innerHTML = '';
     
-    galleryItems.forEach(item => {
+    // Combine featured items and gallery items
+    const allGalleryItems = [];
+    
+    if (typeof featuredItems !== 'undefined') {
+        allGalleryItems.push(...featuredItems);
+    }
+    
+    if (typeof galleryItems !== 'undefined') {
+        allGalleryItems.push(...galleryItems);
+    }
+    
+    allGalleryItems.forEach(item => {
         const link = document.createElement('a');
         link.href = `item-detail.html?id=${item.id}`;
         link.className = 'gallery-item-link';
@@ -73,7 +80,7 @@ function renderGalleryItems() {
         img.onerror = function() {
             // Fallback to placeholder if image doesn't exist
             imageDiv.className = 'gallery-image-placeholder';
-            imageDiv.innerHTML = `<span>Art Piece ${item.id}</span>`;
+            imageDiv.innerHTML = `<span>${item.title}</span>`;
         };
         
         imageDiv.appendChild(img);
@@ -84,11 +91,7 @@ function renderGalleryItems() {
         const title = document.createElement('h3');
         title.textContent = item.title;
         
-        const description = document.createElement('p');
-        description.textContent = item.description;
-        
         infoDiv.appendChild(title);
-        infoDiv.appendChild(description);
         
         itemDiv.appendChild(imageDiv);
         itemDiv.appendChild(infoDiv);
@@ -96,6 +99,73 @@ function renderGalleryItems() {
         link.appendChild(itemDiv);
         container.appendChild(link);
     });
+}
+
+// Render WID event on gallery page (big display)
+function renderGalleryEvents() {
+    const container = document.getElementById('gallery-events-container');
+    if (!container || typeof pastEvents === 'undefined') return;
+    
+    container.innerHTML = '';
+    
+    // Find WID event (id: 20)
+    const widEvent = pastEvents.find(event => event.id === 20);
+    if (!widEvent) return;
+    
+    // Combine main image with additional images
+    const allImages = [widEvent.image, ...(widEvent.additionalImages || [])];
+    
+    const link = document.createElement('a');
+    link.href = `item-detail.html?id=${widEvent.id}`;
+    link.className = 'gallery-event-link';
+    
+    const eventDiv = document.createElement('div');
+    eventDiv.className = 'gallery-event-item';
+    
+    const imageDiv = document.createElement('div');
+    imageDiv.className = 'gallery-event-image';
+    
+    const img = document.createElement('img');
+    img.id = 'gallery-event-main-image';
+    img.src = allImages[0];
+    img.alt = widEvent.title;
+    img.onerror = function() {
+        imageDiv.className = 'gallery-event-image-placeholder';
+        imageDiv.innerHTML = `<span>${widEvent.title}</span>`;
+    };
+    
+    imageDiv.appendChild(img);
+    
+    const infoDiv = document.createElement('div');
+    infoDiv.className = 'gallery-event-info';
+    
+    const title = document.createElement('h3');
+    title.textContent = widEvent.title;
+    
+    const description = document.createElement('p');
+    description.textContent = widEvent.description;
+    
+    infoDiv.appendChild(title);
+    infoDiv.appendChild(description);
+    
+    eventDiv.appendChild(imageDiv);
+    eventDiv.appendChild(infoDiv);
+    
+    link.appendChild(eventDiv);
+    container.appendChild(link);
+    
+    // Cycle through images every 3 seconds if there are multiple images
+    if (allImages.length > 1) {
+        let currentImageIndex = 0;
+        const mainImage = document.getElementById('gallery-event-main-image');
+        
+        setInterval(function() {
+            currentImageIndex = (currentImageIndex + 1) % allImages.length;
+            if (mainImage) {
+                mainImage.src = allImages[currentImageIndex];
+            }
+        }, 3000);
+    }
 }
 
 // Render past events as vertical scrolling list
@@ -171,10 +241,12 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
         renderFeaturedItems();
         renderGalleryItems();
+        renderGalleryEvents();
         renderPastEvents();
     });
 } else {
     renderFeaturedItems();
     renderGalleryItems();
+    renderGalleryEvents();
     renderPastEvents();
 }

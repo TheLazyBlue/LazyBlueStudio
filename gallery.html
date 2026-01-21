@@ -17,21 +17,36 @@
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="gallery.html" class="active">Gallery</a></li>
-                <li><a href="events.html">Events</a></li>
+                <li><a href="https://www.etsy.com" target="_blank">Store</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <main>
-        <!-- Current Gallery Section -->
+        <!-- Gallery Section -->
         <section class="gallery-section">
             <div class="container">
-                <h2>Our Gallery</h2>
-                <p class="section-subtitle">Explore our collection of custom decorations, unique trinkets, and 3D printed art pieces</p>
+                <div class="gallery-section-header">
+                    <div>
+                        <h2>Gallery</h2>
+                        <p class="section-subtitle">Browse our collection of items</p>
+                    </div>
+                    <a href="#events" class="jump-to-events-btn">Jump to Events</a>
+                </div>
                 
                 <div class="gallery-grid" id="gallery-items-container">
                     <!-- Items will be dynamically loaded from items-data.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section class="gallery-events-section" id="events">
+            <div class="container">
+                <h2>Events</h2>
+                <div id="gallery-events-container">
+                    <!-- WID event will be dynamically loaded -->
                 </div>
             </div>
         </section>

@@ -24,13 +24,34 @@ function loadItemDetail() {
     
     const item = allItems[itemId];
     
-    // Build the detail page HTML
+    // Determine back link - use referrer if available, otherwise default
+    let backLink = 'index.html';
+    let backText = 'Home';
+    
+    if (document.referrer) {
+        const referrerUrl = new URL(document.referrer);
+        const referrerPath = referrerUrl.pathname;
+        
+        if (referrerPath.includes('gallery.html')) {
+            backLink = 'gallery.html';
+            backText = 'Gallery';
+        } else if (referrerPath.includes('index.html') || referrerPath.endsWith('/')) {
+            backLink = 'index.html';
+            backText = 'Home';
+        }
+    } else if (item.category === 'Event') {
+        backLink = 'gallery.html';
+        backText = 'Gallery';
+    }
+    
+    // Combine main image with additional images
+    const allImages = [item.image, ...(item.additionalImages || [])];
+    
+    // Build the detail page HTML - simplified with focus on images
     let html = `
         <div class="item-detail">
             <div class="item-detail-header">
-                <a href="${item.category === 'Event' ? 'events.html' : 'index.html'}" class="back-link">← Back to ${item.category === 'Event' ? 'Events' : 'Home'}</a>
-                <h1>${item.title}</h1>
-                ${item.category ? `<span class="item-category">${item.category}</span>` : ''}
+                <a href="${backLink}" class="back-link">← Back to ${backText}</a>
             </div>
             
             <div class="item-detail-content">
@@ -38,62 +59,28 @@ function loadItemDetail() {
                     <div class="item-main-image">
                         <img src="${item.image}" alt="${item.title}" id="main-image">
                     </div>
-                    ${(() => {
-                        // Combine main image with additional images
-                        const allImages = [item.image, ...(item.additionalImages || [])];
-                        if (allImages.length > 1) {
-                            return `
-                            <div class="item-thumbnails">
-                                ${allImages.map((img, index) => `
-                                    <div class="thumbnail ${index === 0 ? 'active' : ''}" data-image="${img}">
-                                        <img src="${img}" alt="${item.title} - View ${index + 1}">
-                                    </div>
-                                `).join('')}
+                    ${allImages.length > 1 ? `
+                    <div class="item-thumbnails">
+                        ${allImages.map((img, index) => `
+                            <div class="thumbnail ${index === 0 ? 'active' : ''}" data-image="${img}">
+                                <img src="${img}" alt="${item.title} - View ${index + 1}">
                             </div>
-                            `;
-                        }
-                        return '';
-                    })()}
+                        `).join('')}
+                    </div>
+                    ` : ''}
                 </div>
                 
                 <div class="item-info-section">
+                    <h1 class="item-title">${item.title}</h1>
                     <div class="item-description">
-                        <h2>Description</h2>
                         <p class="short-description">${item.description}</p>
-                        ${item.detailedDescription ? `<p class="detailed-description">${item.detailedDescription}</p>` : ''}
                     </div>
-                    
-                    ${item.eventDate || item.location ? `
-                    <div class="item-specifications">
-                        <h2>Event Details</h2>
-                        <dl class="specs-list">
-                            ${item.eventDate ? `<dt>Date:</dt><dd>${item.eventDate}</dd>` : ''}
-                            ${item.location ? `<dt>Location:</dt><dd>${item.location}</dd>` : ''}
-                        </dl>
-                    </div>
-                    ` : ''}
-                    
-                    ${item.specifications && Object.keys(item.specifications).length > 0 ? `
-                    <div class="item-specifications">
-                        <h2>Specifications</h2>
-                        <dl class="specs-list">
-                            ${Object.entries(item.specifications).map(([key, value]) => `
-                                <dt>${key}:</dt>
-                                <dd>${value}</dd>
-                            `).join('')}
-                        </dl>
-                    </div>
-                    ` : ''}
-                    
-                    ${item.price ? `
-                    <div class="item-price">
-                        <span class="price-label">Price:</span>
-                        <span class="price-value">$${item.price.toFixed(2)}</span>
-                    </div>
-                    ` : ''}
                     
                     <div class="item-actions">
-                        <a href="contact.html" class="inquiry-btn">Inquire About This Item</a>
+                        ${item.category === 'Event' 
+                            ? `<a href="contact.html" class="inquiry-btn">Contact Us</a>`
+                            : `<a href="https://www.etsy.com" target="_blank" class="inquiry-btn">Visit Store</a>`
+                        }
                     </div>
                 </div>
             </div>
@@ -103,7 +90,6 @@ function loadItemDetail() {
     container.innerHTML = html;
     
     // Set up thumbnail image switching
-    const allImages = [item.image, ...(item.additionalImages || [])];
     if (allImages.length > 1) {
         const thumbnails = container.querySelectorAll('.thumbnail');
         const mainImage = document.getElementById('main-image');

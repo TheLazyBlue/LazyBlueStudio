@@ -9,9 +9,9 @@ const featuredItems = [
     {
         id: 1,
         title: "Heart Vase",
-        description: "Heart shaped vase with forever roses and lilies",
+        description: "Heart shaped vase",
         image: "images/items/item1/main.jpg",  // Main image
-        detailedDescription: "This beautiful heart-shaped vase features carefully arranged forever roses and lilies. Perfect for expressing love and affection, it makes an ideal gift for special occasions. The elegant design complements any decor style.",
+        detailedDescription: "This beautiful heart-shaped vase is perfect for expressing love and affection, making it an ideal gift for special occasions. The elegant design complements any decor style.",
         additionalImages: [
             "images/items/item1/image1.jpg",  // Add more images here
             "images/items/item1/image2.jpg"   // You can add more images as needed
@@ -27,9 +27,9 @@ const featuredItems = [
     {
         id: 2,
         title: "Valentines Vase",
-        description: "Sriped valentines vase with forever roses and lilies",
+        description: "Striped valentines vase",
         image: "images/items/item2/main.jpg",
-        detailedDescription: "A stunning striped Valentine's vase featuring a romantic design perfect for the holiday of love. This piece comes with forever roses and lilies arranged beautifully, making it a memorable gift that lasts.",
+        detailedDescription: "A stunning striped Valentine's vase featuring a romantic design perfect for the holiday of love. This piece makes a memorable gift that lasts.",
         additionalImages: [
             "images/items/item2/image1.jpg",
             "images/items/item2/image2.jpg"
@@ -45,9 +45,9 @@ const featuredItems = [
     {
         id: 3,
         title: "Wavy Vase",
-        description: "Wavy vase with forever roses and lilies",
+        description: "Wavy vase",
         image: "images/items/item3/main.jpg",
-        detailedDescription: "This unique wavy vase design adds a modern twist to traditional flower arrangements. Featuring forever roses and lilies, it creates an eye-catching centerpiece that brings elegance to any space.",
+        detailedDescription: "This unique wavy vase design adds a modern twist to traditional decor. It creates an eye-catching centerpiece that brings elegance to any space.",
         additionalImages: [
             "images/items/item3/image1.jpg",
             "images/items/item3/image2.jpg"
@@ -71,125 +71,73 @@ featuredItems.forEach(item => {
 const galleryItems = [
     {
         id: 4,  // Starting with ID 4 since 1-3 are featured items
-        title: "Custom 3D Printed Sculpture",
-        description: "Handcrafted design",
+        title: "Knitted Heart Keychain Charm",
+        description: "Handcrafted knitted heart keychain charm",
         image: "images/items/item4/main.jpg",
-        detailedDescription: "A beautifully handcrafted 3D printed sculpture showcasing intricate details and precision. Each piece is carefully designed and printed to ensure the highest quality finish.",
+        detailedDescription: "A beautifully handcrafted knitted heart keychain charm showcasing intricate details and precision. Each piece is carefully designed and crafted to ensure the highest quality finish.",
         additionalImages: ["images/items/item4/image1.jpg"],
         price: null,
-        category: "Sculptures",
+        category: "Accessories",
         specifications: {
-            "Material": "3D Printed",
+            "Material": "Knitted",
             "Dimensions": "Customizable"
         }
     },
     {
         id: 5,
-        title: "Decorative Trinket",
-        description: "Unique piece",
+        title: "Jewelry Tree",
+        description: "Elegant jewelry tree for organizing your collection",
         image: "images/items/item5/main.jpg",
-        detailedDescription: "A unique decorative trinket that adds character to any space. Each piece is one-of-a-kind, making it a special addition to your collection.",
+        detailedDescription: "An elegant jewelry tree designed to organize and display your jewelry collection beautifully. Each piece is one-of-a-kind, making it a special addition to your space.",
         additionalImages: ["images/items/item5/image1.jpg"],
         price: null,
-        category: "Trinkets",
+        category: "Organization",
         specifications: {
             "Material": "3D Printed"
         }
     },
     {
         id: 6,
-        title: "3D Printed Decoration",
-        description: "Custom design",
+        title: "F1 Teams Hardshell Notebook",
+        description: "Custom F1 teams themed hardshell notebook",
         image: "images/items/item6/main.jpg",
-        detailedDescription: "Custom-designed 3D printed decoration that can be personalized to match your style and preferences.",
+        detailedDescription: "A custom-designed F1 teams themed hardshell notebook that can be personalized to match your style and preferences. Perfect for racing enthusiasts.",
         additionalImages: ["images/items/item6/image1.jpg"],
         price: null,
-        category: "Decorations",
+        category: "Notebooks",
         specifications: {
-            "Material": "3D Printed",
+            "Material": "Hardshell",
             "Customizable": "Yes"
         }
     },
     {
         id: 7,
-        title: "Personalized Item",
-        description: "Made to order",
+        title: "Knitted Otter",
+        description: "Handcrafted knitted otter plush",
         image: "images/items/item7/main.jpg",
-        detailedDescription: "This personalized item is made to order according to your specifications. Perfect for custom gifts or unique decor pieces.",
+        detailedDescription: "An adorable handcrafted knitted otter plush made to order according to your specifications. Perfect for custom gifts or unique decor pieces.",
         additionalImages: ["images/items/item7/image1.jpg"],
         price: null,
-        category: "Personalized",
+        category: "Plush Toys",
         specifications: {
             "Made to Order": "Yes",
-            "Personalization": "Available"
+            "Material": "Knitted"
         }
     },
     {
         id: 8,
-        title: "Unique Art Piece",
-        description: "One of a kind",
+        title: "Knitted Teddy Bear",
+        description: "Handcrafted knitted teddy bear",
         image: "images/items/item8/main.jpg",
-        detailedDescription: "A one-of-a-kind art piece that showcases creativity and craftsmanship. This unique creation is sure to be a conversation starter.",
+        detailedDescription: "A charming handcrafted knitted teddy bear that showcases creativity and craftsmanship. This unique creation is sure to be a conversation starter and perfect companion.",
         additionalImages: ["images/items/item8/image1.jpg"],
         price: null,
-        category: "Art",
+        category: "Plush Toys",
         specifications: {
-            "Uniqueness": "One of a kind"
-        }
-    },
-    {
-        id: 9,
-        title: "Custom Trinket",
-        description: "Handcrafted detail",
-        image: "images/items/item9/main.jpg",
-        detailedDescription: "A custom trinket featuring handcrafted details that demonstrate our attention to quality and design.",
-        additionalImages: ["images/items/item9/image1.jpg"],
-        price: null,
-        category: "Trinkets",
-        specifications: {
+            "Material": "Knitted",
             "Handcrafted": "Yes"
         }
     },
-    {
-        id: 10,
-        title: "3D Printed Art",
-        description: "Precision crafted",
-        image: "images/items/item10/main.jpg",
-        detailedDescription: "Precision-crafted 3D printed art piece that combines technology with artistic expression.",
-        additionalImages: ["images/items/item10/image1.jpg"],
-        price: null,
-        category: "Art",
-        specifications: {
-            "Precision": "High",
-            "Material": "3D Printed"
-        }
-    },
-    {
-        id: 11,
-        title: "Decorative Piece",
-        description: "Custom creation",
-        image: "images/items/item11/main.jpg",
-        detailedDescription: "A custom decorative piece created to enhance your living space with style and elegance.",
-        additionalImages: ["images/items/item11/image1.jpg"],
-        price: null,
-        category: "Decorations",
-        specifications: {
-            "Custom": "Yes"
-        }
-    },
-    {
-        id: 12,
-        title: "Unique Decoration",
-        description: "Specialty item",
-        image: "images/items/item12/main.jpg",
-        detailedDescription: "A specialty decoration item that stands out with its unique design and quality craftsmanship.",
-        additionalImages: ["images/items/item12/image1.jpg"],
-        price: null,
-        category: "Decorations",
-        specifications: {
-            "Specialty": "Yes"
-        }
-    }
 ];
 
 // Add gallery items to allItems
@@ -201,11 +149,15 @@ galleryItems.forEach(item => {
 const pastEvents = [
     {
         id: 20,
-        title: "WID Fundraiser",
-        description: "Showcasing our custom decor pieces at the fundraiser",
+        title: "Women In Distress Margaretville Starfish Gala Fundraiser 2025",
+        description: "Custom glowing ocean themed decor for the Women In Distress Starfish Gala hosted at Margaretville Hollywood Fl 2025",
         image: "images/events/event1/main.jpg",  // Add event images here
         detailedDescription: "Fundraiser for WID 2025.",
-        additionalImages: ["images/events/event1/image1.jpg"],
+        additionalImages: [
+            "images/events/event1/image1.jpg",
+            "images/events/event1/image2.jpg",
+            "images/events/event1/image3.jpg"
+        ],
         eventDate: "May 2025",
         location: "Margaretville",
         category: "Event"
